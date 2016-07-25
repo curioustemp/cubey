@@ -2,7 +2,16 @@
 hr { border-color: #cccccc; margin: 0px; }
 
 /**** header, main and footer divs ****/
-.header-title { font-size: 30px; }
+.header-title { 
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  text-decoration: none;
+  color: rgba(255,255,255,0.4);
+}
 
 /**** class-based style modifiers ****/
 
@@ -11,3 +20,105 @@ hr { border-color: #cccccc; margin: 0px; }
 .with-margins { margin: 10px; }
 
 .col-centered { float: none; margin: 0 auto; }
+
+body {
+	color: white;
+	background-color: black;
+}
+
+.pull-right a {
+	color: white;
+}
+
+.right-menu__plugins-link {
+  margin-right: 40px;
+}
+
+.right-menu {
+	margin-top: 10px;
+    margin-right: 20px;	
+}
+
+.search {
+  margin: 20px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.search__input {
+  color: white;
+  /* width: 400px; */
+  width: 80%;
+  height: 40px;
+  border: none;
+  background-color: black;
+  border: solid 2px white;
+  font-size: 16px;
+  padding: 0 5px;
+}
+
+.plugin {
+  height: 150px;
+  width: 80%;
+  border: 2px solid white;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.plugin__thumb {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+
+.plugin__content {
+  display: inline-block;
+  height: 100%;
+  width: calc(100% - 158px);
+  vertical-align: top;
+}
+
+.plugin-upvotes {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+}
+
+.plugin-form {
+  width: 400px;
+  margin: 20px auto;
+}
+
+.plugin-form button {
+  border: none;
+  background-color: white;
+  color: black;
+  padding: 5px 8px;
+}
+
+.plugin-form__input {
+  display: block;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.plugin-form__desc {
+  display: block;
+  background-color: black;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.plugin-form-wrapper {
+  margin: 20px;
+  min-height: 50px;
+  position: relative;
+}
+.plugin-form-toggle {
+  position: absolute;
+  right: 45px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}

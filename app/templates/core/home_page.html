@@ -1,22 +1,36 @@
 {% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
 
+{# {% from "core/plugin.html" import render_plugin %} #}
+
+{% macro render_plugin(plugin) %}
+  <div class="plugin">
+	  <img  class ='plugin__thumb' src="{ plugin.img_url }">
+	  <div class="plugin__content">
+	    <h2>{{ plugin.name }}</h2>
+	    <p class="plugin__description">
+	      {{ plugin.description }} 
+	    </p>
+	    <div class="plugin-upvotes">{{ plugin.votes }} votes</div>
+	  </div>
+	</div>
+{% endmacro %}
+
 {% block content %}
-<h1>Home page</h1>
+	<form class="search">
+		<input type="text" name="search" class="search__input" />
+	</form>
 
-<p>This page is accessible to any user (signed in or not)</p>
-
-{% if not current_user.is_authenticated() %}
-<p>
-To view the User page, you must
-<a href="{{ url_for('user.login') }}">Sign in</a> or
-<a href="{{ url_for('user.register') }}">Register</a>.
-</p>
-{% endif %}
-
-<p>
-    Test users:<br/>
-    - user@example.com / Password1<br/>
-    - admin@example.com / Password1
-</p>
+	{% for plugin, count in plugins %}
+	    <div class="plugin">
+	  <img  class ='plugin__thumb' src="{{ plugin.img_url }}">
+	  <div class="plugin__content">
+	    <h2>{{ plugin.name }}</h2>
+	    <p class="plugin__description">
+	      {{ plugin.description }} 
+	    </p>
+	    <div class="plugin-upvotes">{{ count or 0 }} votes</div>
+	  </div>
+	</div>
+	{% endfor %}
 
 {% endblock %}

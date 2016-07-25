@@ -1,0 +1,14 @@
+
+
+{% macro render_plugin(plugin) %}
+  <div class="plugin">
+	  <img  class ='plugin__thumb' src="{{ plugin.img_url }}">
+	  <div class="plugin__content">
+	    <h2>{{ plugin.name }}</h2>
+	    <p class="plugin__description">
+	      {{ plugin.description }} 
+	    </p>
+	    <div class="plugin-upvotes">{{ plugin.votes }} votes</div>
+	  </div>
+	</div>
+{% endmacro %}

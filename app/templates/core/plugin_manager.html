@@ -1,0 +1,60 @@
+{% extends "common/page_base.html" %}  {# common/page_base.html extends layout.html #}
+
+{# {% from "core/plugin.html" import render_plugin %} #}
+
+{% macro render_plugin(plugin) %}
+  <div class="plugin">
+	  <img  class ='plugin__thumb' src="{ plugin.img_url }">
+	  <div class="plugin__content">
+	    <h2>{{ plugin.name }}</h2>
+	    <p class="plugin__description">
+	      {{ plugin.description }} 
+	    </p>
+	    <div class="plugin-upvotes">{{ plugin.votes }} votes</div>
+	  </div>
+	</div>
+{% endmacro %}
+
+
+{% block content %}
+	<div class='plugin-form-wrapper'>
+		<form class="plugin-form" action="/my-plugins" method="post" hidden>
+			<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+			<input type="text" name="name" class="form-control plugin-form__input" placeholder="name"/>
+			<textarea name="description" class="form-control plugin-form__desc" placeholder="description"></textarea>
+			<input type="text" name="repo_url" class="form-control plugin-form__input" placeholder="repo url"/>
+			<input type="text" name="image_url" class="form-control plugin-form__input" placeholder="image url"/>
+			<button type="submit">Submit</button>
+			<button class="plugin-form__cancel">Cancel</button>
+		</form>
+		<button class='plugin-form-toggle'>Add Plugin</button>
+	</div>
+	{% for plugin in plugins %}
+  <div class="plugin">
+	  <img  class ='plugin__thumb' src="{{ plugin.img_url }}">
+	  <div class="plugin__content">
+	    <h2>{{ plugin.name }}</h2>
+	    <p class="plugin__description">
+	      {{ plugin.description }} 
+	    </p>
+	    <div class="plugin-upvotes">{{ plugin.votes }} votes</div>
+	  </div>
+	</div>
+	{% endfor %}
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+  $('.plugin-form-toggle').on("click", function(e) {
+  	$('.plugin-form-toggle').toggle()
+  	$('.plugin-form').toggle('slow');
+  });
+
+  $('.plugin-form__cancel').on("click", function(e){
+  	e.preventDefault()
+  	$('.plugin-form-toggle').toggle()
+  	$('.plugin-form').toggle();
+  });
+</script>
+{% endblock %}
